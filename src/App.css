@@ -1,34 +1,94 @@
-.App {
+.app {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  padding: 50px;
+  background-color: #121212;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Responsive grid */
+.device-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
 }
 
-@keyframes App-logo-spin {
+/* Device card base */
+.device-card {
+  background-color: #1f1f2e;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 230px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover lift effect */
+.device-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Glow effect when ON */
+.device-card.glow {
+  box-shadow: 0 0 20px 5px #FFD700;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Text inside device card */
+.device-card p {
+  font-size: 18px;
+  color: #fff;
+}
+
+/* Styled temperature slider (with dynamic color via CSS variable) */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: var(--slider-color, linear-gradient(to right, #00c6ff, #0072ff));
+  border-radius: 4px;
+  outline: none;
+  margin-top: 12px;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Thumb styling - WebKit */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #0072ff;
+}
+
+/* Thumb styling - Firefox */
+input[type="range"]::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #0072ff;
+}
+
+/* Optional: Responsive tweak for smaller screens */
+@media (max-width: 600px) {
+  .device-card {
+    width: 90%;
+  }
+}
+/* Fan spinning animation */
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }
